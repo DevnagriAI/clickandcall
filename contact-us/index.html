@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurova - Smart AI tools for fast automation & growth</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+    --primary: #4285F4;
+    --primary-hover: #3367D6;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --text-tertiary: #9CA3AF;
+    --background: #FFFFFF;
+    --background-light: #F9FAFB;
+    --border: #E5E7EB;
+    --border-radius: 8px;
+    --spacing-xs: 4px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 64px;
+    --container-width: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--background);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Buttons */
+.btn-primary {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-primary svg {
+    stroke: currentColor;
+}
+
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--background-light);
+    border-color: var(--text-tertiary);
+}
+
+/* Header */
+header {
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.logo svg {
+    stroke: currentColor;
+}
+
+.section-label {
+    display:block;
+    width: fit-content;
+    margin-left: 350px;
+    background-color: rgba(66, 133, 244, 0.1);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    margin-top: 3.5rem;
+}
+
+.section-label-contact-us{
+    display:block;
+    width: fit-content;
+    margin-left: 330px;
+    background-color: rgba(66, 133, 244, 0.1);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-block: 10px;
+    margin-top: 60px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+}
+
+nav a {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+.click-call-container-top{
+    display: flex;
+    justify-content: center;
+}
+
+.click-call-container {
+  max-width: 800px;
+  text-align: center;
+  padding: 30px 20px;
+  color: #000;
+  line-height: 1.6;
+}
+
+.click-call-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.click-call-intro
+ {
+  font-size: 2.15rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.click-call-contact-instruction{
+    font-size: 1.5rem;
+    font-weight:600;
+}
+
+.click-call-question{
+    font-size: 2.15rem;
+    margin-bottom: 0.75rem;
+    font-weight:600;
+    margin-top: 0.5rem;
+}
+
+.click-call-icon {
+  width: 40px;
+  margin: 15px 0;
+}
+
+.click-call-price-label {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.click-call-pricing {
+  text-align: left;
+  margin: 0 auto 20px;
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.click-call-price-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.click-call-dot {
+  margin-right: 6px;
+}
+
+.click-call-price-value {
+  float: right;
+}
+
+.click-call-contact-heading {
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.click-call-contact-details {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  margin-top: 30px;
+}
+
+.click-call-email {
+  color: #000;
+  text-decoration: none;
+}
+
+
+.footer {
+    background-color: rgba(66, 133, 244, 0.1);
+    padding: 60px 0 10px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content:space-around;
+    margin-bottom: 60px;
+}
+
+.footer-brand {
+    max-width: 400px;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.footer-logo svg {
+    height: 15px;
+}
+
+.footer-brand p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.footer-column a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom p {
+    color: var(--text-light);
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-social a {
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    color: var(--primary-color);
+}
+
+
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 3L4 14H15L11 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg> -->
+                    <img src="logo2.png" style="height: 50px;">
+                    <!-- <span>Neurova</span> -->
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonial">Testimonial</a></li>
+                        <li><a href="/">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button class="btn-primary" onclick="scrollDownBy1200px()">
+    Try For Free
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</button>
+            </div>
+        </div>
+    </header>
+
+   <div class="click-call-container-top">
+   <div class="click-call-container">
+    <!-- <h1 class="click-call-title">Click & Call</h1> -->
+     <img src="logo2.png" style="height: 60px;">
+
+    <p class="click-call-intro">
+      Thank you for trying out the free Click<br />and Call demo.
+    </p>
+
+    <!-- <img src="images/click-call-icon.png" alt="Click to Call Icon" class="click-call-icon" /> -->
+     <div style="display: flex; margin-left:280px; margin-bottom: 10px">
+     <img src="left.png" style="height: 50px ;">
+     <img src="center.png" style="height: 50px ;">
+     <img src="right.jpg" style="height: 50px;" >
+     </div>
+
+    <p class="click-call-question">
+      Have you received a call from an AI operator?<br />
+      Service prices are listed below.
+    </p>
+
+    
+     <div class="section-label">Price</div>
+
+    <div class="click-call-pricing">
+      <p class="click-call-price-item">
+        <span class="click-call-dot">●</span>Initial cost
+        <span class="click-call-price-value">¥10,000 ~</span>
+      </p>
+      <p class="click-call-price-item">
+        <span class="click-call-dot">●</span>Additional
+        <span class="click-call-price-value">¥55/1minute</span>
+      </p>
+    </div>
+
+
+   <div class="section-label-contact-us">Contact Us</div>
+
+    <p class="click-call-contact-instruction">
+      If you have scheduled a business<br />
+      meeting over the phone, please ask for<br />
+      details during the meeting.
+    </p>
+
+    <div class="click-call-contact-details">
+      <p>
+        Aiberry Co., Ltd.<br />
+        Murata<br />
+        <a href="mailto:Dai.Murata@aiberry.co.jp" class="click-call-email">Dai.Murata@aiberry.co.jp</a><br />
+        050-3204-1420
+      </p>
+    </div>
+  </div>
+  </div>
+
+
+
+     <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo2.png" style="height: 80px; width:350px; align-self:last baseline">
+                    <p>AI powered solutions for automation and growth</p>
+                    <button class="btn-primary btn-sm">
+                        Try for Free
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="clients-info">
+      <div class="clients-role" style="font-weight: 600;">Development</div>
+      <div class="clients-company">Devnagri AI (India) <a href="https://devnagri.com/" target="_blank">https://devnagri.com/</a></div>
+      <div class="clients-role" style="font-weight: 600;">Marketing Sales</div>
+      <div class="clients-company">Aiberry LLC (Japan) <a href="https://aiberry.co.jp/" target="_blank">https://aiberry.co.jp/</a></div>
+    </div>
+                
+                <!-- <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick links</h4>
+                        <ul>
+                            <li><a href="#about">About us</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Content Creation</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Automation</a></li>
+                            <li><a href="#">LLM Development</a></li>
+                        </ul>
+                    </div>
+                    
+                </div> -->
+            </div>
+            
+        </div>
+    </footer>
+
+    </body>
+</html>
