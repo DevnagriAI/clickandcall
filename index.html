@@ -2000,12 +2000,13 @@ Let's try it.
     <div class="form-title-enhanced">Free Trial Available</div>
     <div class="form-subtitle-enhanced">Please fill out the form below to apply.</div>
 
-    <form class="form-enhanced">
-      <input type="text" placeholder="Nick Name" required />
-      <input type="email" placeholder="Email" required />
-      <input type="tel" placeholder="Phone Number" required />
+    <form class="form-enhanced" action="https://am.devnagri.com/webhook-test/e3e13025-5eb5-4402-9ade-4c4cbd41333d" method="POST" target="hidden-iframe">
+      <input type="text" name="name" placeholder="Nick Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
       <button type="submit" class="btn-submit-enhanced">Get Started</button>
     </form>
+    <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
 
     <div class="form-note-enhanced">
       Once you click send, you will receive an email.<br />
@@ -2480,5 +2481,6 @@ introIcons.forEach((icon, index) => {
 
 
      </script>
+     <script src="script2.js"></script>
 </body>
 </html>
