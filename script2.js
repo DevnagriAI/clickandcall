@@ -2,37 +2,59 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.form-enhanced');
     if (!form) return;
 
-    // Handle form submission
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
         const submitButton = form.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.textContent;
+        const originalText = submitButton.textContent;
+        const statusDiv = document.getElementById('form-status');
         
-        // Disable button and show loading state
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending...';
-        
-        // Add a small delay to show the loading state
-        setTimeout(() => {
-            // Show success message
-            alert('Thank you! We have received your information.');
+        try {
+            // Show loading state
+            const statusDiv = document.getElementById('form-status');
+            statusDiv.textContent = 'Sending your information...';
+            statusDiv.style.color = '#3B82F6'; // Blue color for info
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
             
-            // Reset form and button state
-            form.reset();
+            // Get form data
+            const formData = {
+                name: form.querySelector('[name="name"]').value,
+                email: form.querySelector('[name="email"]').value,
+                phone: form.querySelector('[name="phone"]').value
+            };
+            
+            // Send data
+            const response = await fetch('https://am.devnagri.com/webhook/e3e13025-5eb5-4402-9ade-4c4cbd41333d', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            console.log('Response status:', response.status);
+            
+            // Handle success response
+            if (response.ok) {
+                statusDiv.textContent = 'Thank you! Your information has been submitted successfully.';
+                statusDiv.style.color = '#10B981'; // Green color for success
+                form.reset();
+                // Optionally redirect after a short delay
+                setTimeout(() => {
+                    window.location.href = 'contact-us/index.html';
+                }, 1500);
+            } else {
+                statusDiv.textContent = 'There was an error submitting the form. Please try again.';
+                statusDiv.style.color = '#EF4444'; // Red color for error
+            }
+            
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            // Reset button state
             submitButton.disabled = false;
-            submitButton.textContent = originalButtonText;
-        }, 1000);
-        
-        // The form will submit normally to the iframe
-        // We don't need to prevent default or handle the actual submission
-        // as the form's action and method will handle it
+            submitButton.textContent = originalText;
+        }
     });
-    
-    // Handle iframe load event to detect when the form submission is complete
-    const iframe = document.getElementById('hidden-iframe');
-    if (iframe) {
-        iframe.onload = function() {
-            console.log('Form submitted successfully');
-            // The success message is already shown in the form submit handler
-        };
-    }
 });
