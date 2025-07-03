@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 statusDiv.style.color = '#10B981'; // Green color for success
                 form.reset();
                 // Optionally redirect after a short delay
-                setTimeout(() => {
-                    window.location.href = 'contact-us/index.html';
-                }, 1500);
+                // setTimeout(() => {
+                //     window.location.href = 'contact-us/index.html';
+                // }, 1500);
             } else {
                 statusDiv.textContent = 'There was an error submitting the form. Please try again.';
                 statusDiv.style.color = '#EF4444'; // Red color for error
