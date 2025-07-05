@@ -96,12 +96,21 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
             
-            // Get form data
+            // Get form data safely
+            const nameInput = form.querySelector('[name="name"]');
+            const emailInput = form.querySelector('[name="email"]');
+            const phoneInput = form.querySelector('[name="phone"]');
+            const countryCodeInput = form.querySelector('[name="country_code"]');
+            
+            if (!nameInput || !emailInput || !phoneInput) {
+                throw new Error('Required form fields are missing');
+            }
+            
             const formData = {
-                name: form.querySelector('[name="name"]').value,
-                email: form.querySelector('[name="email"]').value,
-                phone: form.querySelector('[name="country_code"]').value + 
-                       form.querySelector('[name="phone"]').value.replace(/^\+?91/, '')
+                name: nameInput.value,
+                email: emailInput.value,
+                phone: (countryCodeInput ? countryCodeInput.value : '') + 
+                       phoneInput.value.replace(/^\+?91/, '')
             };
             
             // Send data
